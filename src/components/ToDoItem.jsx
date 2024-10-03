@@ -1,19 +1,16 @@
 import React, { useState } from "react";
+import useToggle from "./useToggle";
 
 const ToDoItem = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const applyLine = () => {
-    setIsChecked((prev) => !prev);
-  };
+  const [value, toggleValue] = useToggle(false);
 
   const customStyle = {
-    textDecoration: isChecked ? "line-through" : "none",
+    textDecoration: value ? "line-through" : "none",
   };
 
   return (
     <li>
-      <input type="checkbox" onChange={applyLine} checked={isChecked} />
+      <input type="checkbox" onChange={toggleValue} checked={value} />
       <span style={customStyle}> {props.text}</span>
       <button
         onClick={() => {
