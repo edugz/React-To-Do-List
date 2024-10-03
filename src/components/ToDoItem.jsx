@@ -8,13 +8,21 @@ const ToDoItem = (props) => {
     textDecoration: value ? "line-through" : "none",
   };
 
+  const deleteItem = (id) => {
+    props.setItems((prevItems) => {
+      return prevItems.filter((_, index) => {
+        return index !== id;
+      });
+    });
+  };
+
   return (
     <li>
       <input type="checkbox" onChange={toggleValue} checked={value} />
       <span style={customStyle}> {props.text}</span>
       <button
         onClick={() => {
-          props.toDelete(props.id);
+          deleteItem(props.id);
         }}
       >
         Delete

@@ -3,18 +3,22 @@ import React, { useState } from "react";
 const InputArea = (props) => {
   const [userInput, setUserInput] = useState("");
 
+  const addItem = (userInput) => {
+    props.setItems((prevItems) => {
+      return [...prevItems, userInput];
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (userInput.trim().length === 0) return;
+    addItem(userInput);
+    setUserInput("");
+  };
+
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (userInput.trim().length > 0) {
-            props.onAdd(userInput);
-            setUserInput("");
-          } else {
-          }
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <input
           onChange={(e) => setUserInput(e.target.value)}
           type="text"
