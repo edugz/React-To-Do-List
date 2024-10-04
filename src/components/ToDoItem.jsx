@@ -20,7 +20,6 @@ const ToDoItem = (props) => {
     <li>
       <input type="checkbox" onChange={toggleValue} checked={value} />
       <span style={customStyle} onClick={toggleValue}>
-        {" "}
         {props.text}
       </span>
       <button
