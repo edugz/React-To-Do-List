@@ -16,6 +16,10 @@ const InputArea = (props) => {
     setUserInput("");
   };
 
+  const deleteAll = () => {
+    props.setItems([]);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -26,6 +30,14 @@ const InputArea = (props) => {
           value={userInput}
         />
         <button type="submit">Add</button>
+        <button
+          type="button"
+          onClick={() => {
+            deleteAll();
+          }}
+        >
+          Delete All
+        </button>
       </form>
     </div>
   );

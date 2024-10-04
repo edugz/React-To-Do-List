@@ -19,7 +19,10 @@ const ToDoItem = (props) => {
   return (
     <li>
       <input type="checkbox" onChange={toggleValue} checked={value} />
-      <span style={customStyle}> {props.text}</span>
+      <span style={customStyle} onClick={toggleValue}>
+        {" "}
+        {props.text}
+      </span>
       <button
         onClick={() => {
           deleteItem(props.id);
