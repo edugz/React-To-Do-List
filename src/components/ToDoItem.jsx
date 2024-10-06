@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useToggle from "./useToggle";
+import useToggle from "./hooks/useToggle";
 
 const ToDoItem = (props) => {
   const [value, toggleValue] = useToggle(false);
@@ -17,11 +17,13 @@ const ToDoItem = (props) => {
   };
 
   return (
-    <li>
-      <input type="checkbox" onChange={toggleValue} checked={value} />
-      <span style={customStyle} onClick={toggleValue}>
-        {props.text}
-      </span>
+    <li className="list-item">
+      <div className="text-container">
+        <input type="checkbox" onChange={toggleValue} checked={value} />
+        <span style={customStyle} onClick={toggleValue}>
+          {props.text}
+        </span>
+      </div>
       <button
         onClick={() => {
           deleteItem(props.id);
