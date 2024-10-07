@@ -21,16 +21,20 @@ const InputArea = (props) => {
   };
 
   return (
-    <div>
+    <div className="input-container">
       <form onSubmit={handleSubmit}>
         <input
+        className="input-task"
           onChange={(e) => setUserInput(e.target.value)}
           type="text"
           placeholder="Next task..."
           value={userInput}
         />
-        <button type="submit">Add</button>
+        <button className="add-button" type="submit">
+          Add
+        </button>
         <button
+          className="delete-all-button"
           type="button"
           onClick={() => {
             deleteAll();
